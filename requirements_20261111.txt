@@ -1,0 +1,41 @@
+# ==============================================================================
+# Python AI & 影音多媒體全套核心套件清單 (2026-11-11)
+# ==============================================================================
+
+# 1. 深度學習與語音辨識 (ASR)
+torch
+ctranslate2
+onnxruntime
+faster-whisper
+openai-whisper
+tiktoken
+tokenizers
+huggingface_hub
+
+# 2. 文字轉語音 (TTS)
+edge-tts
+pyttsx3
+
+# 3. 視訊、音訊剪輯與影像處理
+moviepy
+av
+imageio
+imageio-ffmpeg
+pillow
+
+# 4. 網路影音下載與逐字稿提取
+yt-dlp
+youtube-transcript-api
+
+# 5. 瀏覽器自動化與現代網路爬蟲
+playwright
+aiohttp
+requests
+httpx
+
+# 6. Windows 系統輔助與實用工具
+python-dotenv
+pywin32
+tqdm
+questionary
+tabulate

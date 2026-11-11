@@ -1,74 +1,52 @@
-# AGY-GitHub
+# AGY-GitHub：全套 AI、影音多媒體與開發環境懶人包
 
-GitHub 帳號認證與遠端倉庫（Repo）建立自動化懶人包。
+本專案旨在提供新電腦**「開箱即用」**的自動化配置腳本，讓您在全新 Windows 電腦上下載後，只需一鍵執行，即可自動完成工具安裝、環境設定與 GitHub 帳號連接。
 
 建立日期：`2026-11-11`
 
 ---
 
-## 📦 懶人包檔案清單
+## 📦 專案檔案清單與功能
 
-- **[setup_github_repo_20261111.bat](file:///C:/AGY-GitHub/setup_github_repo_20261111.bat)**：Windows 批次啟動檔（在任何新電腦下載後，**直接雙擊即可執行**）。
-- **[setup_github_repo_20261111.ps1](file:///C:/AGY-GitHub/setup_github_repo_20261111.ps1)**：PowerShell 核心腳本，自動處理工具安裝、GitHub 登入、初始化、建 Repo 與 Push。
-- **[README.md](file:///C:/AGY-GitHub/README.md)**：完整說明與手動指令對照手冊。
+### 1. 🛠️ 新電腦全套工作環境建置懶人包（排除商業辦公與付費套件）
+*已依需求排除 ActivePresenter、CapCut（剪映）與 Office LTSC 2024。*
 
----
-
-## 🚀 在新電腦上使用方法
-
-1. **下載本專案**：
-   - 方式 A：在 GitHub 頁面點擊 **Code -> Download ZIP**，解壓縮到任意資料夾。
-   - 方式 B：使用 Git Clone：
-     ```bash
-     git clone https://github.com/fox369788-ops/AGY-GitHub.git
-     ```
-2. **執行懶人包**：
-   - 點擊執行 `setup_github_repo_20261111.bat`（或在 PowerShell 中執行 `./setup_github_repo_20261111.ps1`）。
-3. **依提示操作**：
-   - 若電腦未安裝 Git 或 GitHub CLI (`gh`)，腳本會透過 Windows `winget` 自動安裝。
-   - 瀏覽器會開啟 GitHub 認證頁面，輸入終端機出現的 8 碼驗證碼並點擊授權。
-   - 腳本將自動引導您在本地資料夾初始化 Git 並在 GitHub 建立同名 Repo！
+- **[`install_environment_20261111.bat`](file:///C:/AGY-GitHub/install_environment_20261111.bat)**：雙擊啟動檔，自動繞過 PowerShell 權限限制執行安裝。
+- **[`install_environment_20261111.ps1`](file:///C:/AGY-GitHub/install_environment_20261111.ps1)**：安裝核心腳本，涵蓋：
+  1. **系統開發工具**：Git, GitHub CLI, Python 3.14, uv, Node.js (`@opencode/cli`)。
+  2. **影音多媒體**：Gyan FFmpeg 9.0 (含 `ffprobe`)。
+  3. **知識庫與 OCR**：Obsidian, Tesseract-OCR, Poppler (`pdftoppm`)。
+  4. **Python AI 套件庫**：Faster-Whisper, PyTorch, Edge-TTS, MoviePy, Playwright, yt-dlp 等。
+  5. **專屬技能還原**：自動部署 `auto-video-editor` 教學影片自動剪輯工作流。
+- **[`requirements_20261111.txt`](file:///C:/AGY-GitHub/requirements_20261111.txt)**：Python AI 與多媒體相依套件清單。
+- **[`skills_backup_20261111/`](file:///C:/AGY-GitHub/skills_backup_20261111/)**：`auto-video-editor` 核心演算法與逐字稿自動對齊腳本備份。
 
 ---
 
-## 📖 手動執行工作流程指令對照
+### 2. 🐙 GitHub 帳號連接與 Repo 建立懶人包
+- **[`setup_github_repo_20261111.bat`](file:///C:/AGY-GitHub/setup_github_repo_20261111.bat)**：一鍵連線啟動檔。
+- **[`setup_github_repo_20261111.ps1`](file:///C:/AGY-GitHub/setup_github_repo_20261111.ps1)**：引導完成 GitHub 網頁登入、自動綁定 Git 使用者、初始化本地 Git 並在遠端建立同名 Repo。
 
-如果不想使用腳本，手動操作的 4 大步驟如下：
+---
 
-### 1. 確認與安裝工具
-```powershell
-# 檢查版本
-git --version
-gh --version
+## 🚀 在新電腦上使用指南
 
-# 若未安裝，可使用 Windows 內建 winget 安裝
-winget install --id Git.Git -e
-winget install --id GitHub.cli -e
-```
+### 情境 A：在新電腦上復刻完整的 AI 與多媒體環境
+1. 在新電腦上下載本倉庫（點擊 GitHub 綠色 **Code ➔ Download ZIP** 或以 Git clone）。
+2. 解壓縮後，對著 **`install_environment_20261111.bat`** 按右鍵，選擇 **「以系統管理員身分執行」**。
+3. 腳本將透過 Windows 官方 `winget` 自動下載並安裝所有工具，並自動安裝 Python 相依套件與還原剪輯技能。
+4. 安裝完成後，視窗底部會輸出綠色檢核表，確認各工具皆已就緒。
 
-### 2. 使用 GitHub CLI 認證登入
-```powershell
-# 網頁瀏覽器認證流程
-gh auth login --web -h github.com -p https
+### 情境 B：在新電腦上連接 GitHub 並建立新專案
+1. 雙擊執行 **`setup_github_repo_20261111.bat`**。
+2. 依照畫面指引，在跳出的 GitHub 瀏覽器頁面貼上 8 碼驗證碼以授權登入。
+3. 指定專案目錄，腳本將自動為您在 GitHub 建立倉庫並推送檔案。
 
-# 設定 Git 提交身分
-git config --global user.name "fox369788-ops"
-git config --global user.email "fox369788@gmail.com"
-```
+---
 
-### 3. 初始化本地專案 Git
-```powershell
-cd C:\你的專案資料夾
-git init -b main
-```
+## 🎯 此環境所具備的核心能力
 
-### 4. 建立與資料夾同名的 GitHub Repo 並上傳
-```powershell
-# 建立 Public Repo 並自動綁定本地 origin
-gh repo create <倉庫名稱> --public --source=. --remote=origin
-
-# 提交並推送到 GitHub
-git add .
-git commit -m "Initial commit"
-git push -u origin main
-```
+1. **教學影片自動剪輯**：Faster-Whisper 語音轉文字、靜音斷崖偵測、口誤自動刪減、FFmpeg 幀級無縫拼接與 SRT 字幕產出。
+2. **YouTube 知識萃取與 AI 播客**：`yt-dlp` 下載、字幕提取、筆記整理至 Obsidian、對接 NotebookLM 產出雙人對話式 Podcast。
+3. **文件與掃描檔 OCR**：Poppler + Tesseract-OCR 實現掃描 PDF 批次辨識與文字轉換。
+4. **現代化網頁爬蟲與自動化**：Playwright 動態網頁自動化擷取。
